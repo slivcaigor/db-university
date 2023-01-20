@@ -66,11 +66,8 @@ WHERE departments.name LIKE 'Dipartimento di Matematica'
 
 SELECT students.name, courses.name, COUNT(DISTINCT exams.id)
 FROM students
-JOIN exam_student 
-ON students.id = exam_student.student_id
-JOIN exams 
-ON exam_student.exam_id = exams.id
-JOIN courses 
-ON exams.course_id = courses.id
-WHERE exam_student.vote >= 18
+JOIN exam_student ON students.id = exam_student.student_id
+JOIN exams ON exam_student.exam_id = exams.id
+JOIN courses ON exams.course_id = courses.id
 GROUP BY students.name, courses.name
+HAVING MAX(exam_student.vote) >= 18
