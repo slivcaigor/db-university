@@ -9,12 +9,10 @@ LIKE 'Corso di Laurea in Economia';
 
 -- 2. Selezionare tutti i Corsi di Laurea Magistrale del Dipartimento di Neuroscienze
 
-SELECT courses.name
-FROM courses
+SELECT *
+FROM departments
 JOIN degrees 
-ON courses.degree_id = degrees.id
-JOIN departments 
-ON degrees.department_id = departments.id
+ON departments.id = degrees.department_id
 WHERE departments.name 
 LIKE 'Dipartimento di Neuroscienze' 
 AND degrees.level 
